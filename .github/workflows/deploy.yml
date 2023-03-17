@@ -7,19 +7,21 @@ on:
     branches: [ "main" ]
     
 env:
-  AZURE_FUNCTIONAPP_NAME: azgofuncapp   # set this to your application's name
+  AZURE_FUNCTIONAPP_NAME: "tak-test-ghactions-function-appfunc"   # set this to your application's name
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     
-    - name: 'Login via Azure CLI'
+
+    - name: 'Az CLI login'
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_RBAC_CREDENTIALS }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: 'Set up Go'
       uses: actions/setup-go@v3
