@@ -5,6 +5,10 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
+permissions:
+  contents: read
+  id-token: write
     
 env:
   AZURE_FUNCTIONAPP_NAME: "tak-test-ghactions-function-appfunc"   # set this to your application's name
